@@ -1,31 +1,48 @@
-// NeuroLens AI — Popup Script
+import { request, sendMessage } from '../messaging/index.js';
+import { MSG_TYPES } from '../messaging/constants.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('[NeuroLens] Popup loaded');
+document.addEventListener('DOMContentLoaded', async () => {
+  const btnOpenSidePanel = document.getElementById('btn-open-sidepanel');
+  const btnSettings = document.getElementById('btn-settings');
+  const tabDetails = document.getElementById('tab-details');
+  const statusText = document.getElementById('status-text');
 
-  // Summarize button
-  document.getElementById('btn-summarize')?.addEventListener('click', () => {
-    chrome.runtime.sendMessage({ action: 'summarize' });
+  // Initialize
+  try {
+    const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+    const activeTab = tabs[0];
+    
+    if (activeTab) {
+      tabDetails.textContent = activeTab.title || activeTab.url;
+    }
+  } catch (error) {
+    console.error('Error fetching tab info:', error);
+    tabDetails.textContent = 'Unable to fetch tab info';
+  }
+
+  // Event Listeners
+  btnOpenSidePanel.addEventListener('click', async () => {
+    try {
+      const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+      const currentTab = tabs[0];
+      if (currentTab) {
+        await sendMessage(MSG_TYPES.TOGGLE_SIDEPANEL, { windowId: currentTab.windowId });
+        window.close(); // Close popup after opening side panel
+      }
+    } catch (err) {
+      console.error('Failed to open side panel', err);
+    }
   });
 
-  // Chat button
-  document.getElementById('btn-chat')?.addEventListener('click', () => {
-    chrome.runtime.sendMessage({ action: 'openChat' });
+  btnSettings.addEventListener('click', () => {
+    if (chrome.runtime.openOptionsPage) {
+      chrome.runtime.openOptionsPage();
+    } else {
+      window.open(chrome.runtime.getURL('options.html'));
+    }
   });
 
-  // Bookmark button
-  document.getElementById('btn-bookmark')?.addEventListener('click', () => {
-    chrome.runtime.sendMessage({ action: 'bookmark' });
-  });
-
-  // Side panel button
-  document.getElementById('btn-sidepanel')?.addEventListener('click', () => {
-    chrome.runtime.sendMessage({ action: 'toggleSidePanel' });
-  });
-
-  // Dashboard link
-  document.getElementById('btn-dashboard')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    chrome.tabs.create({ url: 'http://localhost:5173/dashboard' });
-  });
+  // Example of using messaging to fetch status or do health check
+  // Here we just set it manually since AI is not implemented
+  statusText.textContent = "AI Modules Disabled (Phase 2)";
 });
