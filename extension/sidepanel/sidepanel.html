@@ -1,27 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NeuroLens AI — Side Panel</title>
-  <link rel="stylesheet" href="sidepanel.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroLens AI - Side Panel</title>
+  <link rel="stylesheet" href="sidepanel.css">
+  <style>
+    /* Basic styles for the shell to ensure tabs are visible */
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+    .tabs { display: flex; overflow-x: auto; background: #fff; border-bottom: 1px solid #ccc; }
+    .tab { padding: 10px 15px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; }
+    .tab.active { border-bottom-color: #007bff; color: #007bff; font-weight: bold; }
+    .content-area { padding: 20px; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+  </style>
 </head>
 <body>
-  <div id="sidepanel-root">
-    <header class="sp-header">
-      <div class="sp-logo">🧠</div>
-      <h1>NeuroLens AI</h1>
-    </header>
-    <main class="sp-content">
-      <div class="sp-empty">
-        <p>Start browsing to see AI insights here.</p>
-      </div>
+  <div class="sidepanel-container">
+    <nav class="tabs" id="tabs-nav">
+      <div class="tab active" data-target="panel-chat">Chat</div>
+      <div class="tab" data-target="panel-workspace">Workspace</div>
+      <div class="tab" data-target="panel-knowledge">Knowledge</div>
+      <div class="tab" data-target="panel-history">History</div>
+      <div class="tab" data-target="panel-voice">Voice</div>
+      <div class="tab" data-target="panel-analytics">Analytics</div>
+    </nav>
+
+    <main class="content-area">
+      <!-- Chat Panel -->
+      <section id="panel-chat" class="panel active">
+        <h2>AI Chat</h2>
+        <p>Chat interface placeholder. (AI disabled in Phase 2)</p>
+      </section>
+
+      <!-- Workspace Panel -->
+      <section id="panel-workspace" class="panel">
+        <h2>Workspace</h2>
+        <p>Workspace and bookmarks placeholder.</p>
+      </section>
+
+      <!-- Knowledge Panel -->
+      <section id="panel-knowledge" class="panel">
+        <h2>Knowledge Base</h2>
+        <p>Knowledge graphs and document context placeholder.</p>
+      </section>
+
+      <!-- History Panel -->
+      <section id="panel-history" class="panel">
+        <h2>History</h2>
+        <p>Previous interactions and summaries placeholder.</p>
+      </section>
+
+      <!-- Voice Panel -->
+      <section id="panel-voice" class="panel">
+        <h2>Voice AI</h2>
+        <p>Voice interaction placeholder.</p>
+      </section>
+
+      <!-- Analytics Panel -->
+      <section id="panel-analytics" class="panel">
+        <h2>Analytics</h2>
+        <p>Usage statistics and insights placeholder.</p>
+      </section>
     </main>
-    <footer class="sp-input">
-      <input type="text" placeholder="Ask about this page..." />
-      <button>→</button>
-    </footer>
   </div>
-  <script src="sidepanel.js"></script>
+  <script type="module" src="sidepanel.js"></script>
 </body>
 </html>
