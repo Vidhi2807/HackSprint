@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeuroLens AI</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div id="popup-root">
+    <header class="popup-header">
+      <div class="logo">
+        <div class="logo-icon">🧠</div>
+        <div class="logo-text">
+          <h1>NeuroLens AI</h1>
+          <span>Browser Companion</span>
+        </div>
+      </div>
+    </header>
+    <main class="popup-content">
+      <div class="status-card">
+        <div class="status-dot active"></div>
+        <span>Active on this page</span>
+      </div>
+      <div class="actions">
+        <button class="action-btn" id="btn-summarize">📝 Summarize Page</button>
+        <button class="action-btn" id="btn-chat">💬 Open Chat</button>
+        <button class="action-btn" id="btn-bookmark">🔖 Save Bookmark</button>
+        <button class="action-btn" id="btn-sidepanel">📋 Side Panel</button>
+      </div>
+    </main>
+    <footer class="popup-footer">
+      <a href="#" id="btn-dashboard">Open Dashboard</a>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

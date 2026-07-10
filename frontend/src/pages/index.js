@@ -1,0 +1,9 @@
+export { default as Dashboard } from './Dashboard';
+export { default as Chat } from './Chat';
+export { default as Workspace } from './Workspace';
+export { default as History } from './History';
+export { default as Bookmarks } from './Bookmarks';
+export { default as Knowledge } from './Knowledge';
+export { default as Settings } from './Settings';
+export { default as Analytics } from './Analytics';
+export { default as NotFound } from './NotFound';

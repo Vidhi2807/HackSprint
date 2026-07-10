@@ -1,29 +1,24 @@
 {
   "name": "neurolens-ai",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "NeuroLens AI — Intelligent Chrome Extension Browser Companion",
   "scripts": {
-    "dev:web": "pnpm --filter @neurolens/web dev",
-    "dev:backend": "pnpm --filter @neurolens/backend dev",
-    "dev:extension": "pnpm --filter @neurolens/extension dev",
-    "build:web": "pnpm --filter @neurolens/web build",
-    "build:backend": "pnpm --filter @neurolens/backend build",
-    "build:extension": "pnpm --filter @neurolens/extension build",
-    "build:packages": "pnpm --filter './packages/**' build",
-    "build": "pnpm build:packages && pnpm build:web && pnpm build:backend && pnpm build:extension",
-    "lint": "pnpm -r lint",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "clean": "pnpm -r exec rm -rf dist node_modules .turbo",
-    "typecheck": "pnpm -r typecheck"
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && npm install",
+    "install:all": "npm run install:frontend && npm run install:backend",
+    "dev": "npm run dev:frontend",
+    "format": "prettier --write \"**/*.{js,jsx,json,css,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,json,css,md}\""
   },
   "keywords": ["ai", "chrome-extension", "browser-companion", "neurolens"],
   "author": "NeuroLens Team",
   "license": "MIT",
   "engines": {
-    "node": ">=20.0.0",
-    "pnpm": ">=9.0.0"
-  },
-  "packageManager": "pnpm@9.15.0"
+    "node": ">=20.0.0"
+  }
 }

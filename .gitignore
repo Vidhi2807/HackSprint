@@ -1,8 +1,9 @@
 # Dependencies
 node_modules/
-.pnpm-store/
+.pnp
+.pnp.js
 
-# Build outputs
+# Build
 dist/
 build/
 *.tsbuildinfo
@@ -24,14 +25,13 @@ build/
 Thumbs.db
 
 # Logs
+logs/
 *.log
 npm-debug.log*
-pnpm-debug.log*
 
 # Testing
 coverage/
 
 # Misc
+*.tgz
 .cache/
-.temp/
-.tmp/

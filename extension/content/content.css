@@ -1,0 +1,10 @@
+/* NeuroLens AI — Content Script Styles */
+/* Injected into web pages — keep minimal to avoid conflicts */
+
+.neurolens-overlay {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999999;
+  font-family: 'Inter', system-ui, sans-serif;
+}
